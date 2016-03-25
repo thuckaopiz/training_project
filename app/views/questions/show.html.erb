@@ -1,0 +1,4 @@
+<%= @question.content %> <br>
+<% @question.options.each_with_index do |option, index| %>
+  <b><%= QuestionsHelper::OPTION[index] %>. </b><%= option.content %><br>
+<% end %>

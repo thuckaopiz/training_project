@@ -1,0 +1,20 @@
+<h2>List questions</h2>
+<% @questions.each do |question| %>
+  <div>
+    <h3>Question <%= question.id %></h3>
+    <p>
+      <small><%= link_to "Edit", edit_question_path(question), class:"text-muted action-link" %></small>
+      <small>
+        <%= link_to "Delete", question_path(question),
+          method: :delete, data: { confirm: 'Are you sure?' },
+          class:"text-muted action-link" %>
+      </small>
+    </p>
+    <p><%= question.content %></p>
+    <p>
+      <% question.options.each_with_index do |option, index| %>
+        <b><%= QuestionsHelper::OPTION[index] %>. </b><%= option.content %><br>
+      <% end %>
+    </p>
+  </div>
+<% end %>
