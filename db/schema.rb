@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315151453) do
+ActiveRecord::Schema.define(version: 20160316093210) do
 
   create_table "answer_sheets", force: :cascade do |t|
     t.integer  "examinee_id"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20160315151453) do
     t.integer  "answer_sheet_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "borrower_questions", force: :cascade do |t|
+    t.integer  "borrower_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -54,18 +61,18 @@ ActiveRecord::Schema.define(version: 20160315151453) do
 
   create_table "options", force: :cascade do |t|
     t.integer  "question_id"
-    t.boolean  "correct"
+    t.boolean  "correct",     default: false
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer  "examination_id"
     t.integer  "question_type"
     t.string   "content"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "subject_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade do |t|

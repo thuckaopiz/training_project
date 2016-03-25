@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :examinations, foreign_key: "examiner_id"
   belongs_to :role
   has_many :likes
-  has_many :questions, through: :user_questions
-  has_many :user_questions
+  has_many :questions, foreign_key: "maker_id"
+  has_many :borrowed_questions, through: :borrower_questions
+  has_many :borrower_questions
 end

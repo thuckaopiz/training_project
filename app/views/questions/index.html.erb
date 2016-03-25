@@ -1,0 +1,12 @@
+<h2>List questions</h2>
+<% @questions.each do |question| %>
+  <div>
+    <h3>Question <%= question.id %></h3>
+    <p>
+      <small><%= link_to_edit(question, "text-muted action-link") %></small>
+      <small><%= link_to_delete(question, "text-muted action-link") %></small>
+    </p>
+    <p><%= question.content %></p>
+    <p><%= print_options_question question %></p>
+  </div>
+<% end %>
