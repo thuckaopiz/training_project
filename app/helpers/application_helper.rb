@@ -1,2 +1,9 @@
 module ApplicationHelper
+  def link_to_delete object, klass
+    link_to "Delete", object, method: :delete, data: { confirm: 'Are you sure?' }, class: klass
+  end
+
+  def link_to_edit object, klass
+    link_to "Edit", [:edit, object], class: klass
+  end
 end
