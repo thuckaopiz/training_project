@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
   end
 
-  def udpate
+  def update
     @question = Question.find params[:id]
     if @question.update_attributes question_params
       flash[:notice] = "Updated"
@@ -48,6 +48,9 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Can't destroy"
       redirect_to :back
     end
+  end
+
+  def test_math_jax
   end
 
   private
