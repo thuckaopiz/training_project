@@ -50,6 +50,9 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def test_math_jax
+  end
+
   private
   def question_params
     params.require(:question).permit(:content, :subject_id,
