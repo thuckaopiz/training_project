@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
   end
 
-  def udpate
+  def update
     @question = Question.find params[:id]
     if @question.update_attributes question_params
       flash[:notice] = "Updated"
