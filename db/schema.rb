@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160316093210) do
     t.integer  "question_type"
     t.string   "content"
     t.string   "subject_id"
+    t.integer  "maker_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -86,13 +87,6 @@ ActiveRecord::Schema.define(version: 20160316093210) do
     t.integer  "category_id"
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "user_questions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

@@ -1,0 +1,34 @@
+<h1>Edit question</h1>
+<%= form_for @question do |f| %>
+  <div>
+    <%= f.label :content, "Question" %><br>
+    <%= f.text_area :content, class: "form-control", rows: 3 %><br>
+  </div>
+  <div>
+    <%= f.label :subject_id, "Subject" %>
+    <%= f.select :subject_id, options_for_select(Subject.all.collect {|subject| [ subject.name, subject.id ] }, :selected => Subject.last.id) %>
+    <!-- Intead of Subject.last.id by current_user.subject -->
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr class="text-muted">
+        <th>Options</th>
+        <th>Content</th>
+        <th>Correct?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :options do |builder| %>
+        <tr>
+          <td><%= builder.label :content, "Option#{builder.index + 1}" %></td>
+          <td><%= builder.text_area :content, class: "form-control", rows: 2 %></td>
+          <td><%= builder.check_box :correct %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div col-md-6 col-md-offset-3>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
